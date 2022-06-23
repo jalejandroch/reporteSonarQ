@@ -1,0 +1,48 @@
+<!-- holiiii -->
+
+<!-- let info: any = {
+  component: iss.component,
+  issues: [],
+
+  tag: '#collapse'+iss.key,
+  id: 'collapse'+iss.key
+};
+
+let _iss = {
+  key: iss.key,
+  line: iss.line,
+  message: iss.message
+}; -->
+
+<!-- <div class="accordion" id="accordionExample">
+  <div class="accordion-item" *ngFor="let val of report">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAYFehexUb_-37Ufde_1d" aria-expanded="true" aria-controls="collapseOne">
+        {{val.component}}
+        {{val.line}}
+      </button>
+    </h2>
+    <div [id]="val.id" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        {{val.message}}
+      </div>
+    </div>
+  </div>
+
+</div> -->
+<!--
+
+<div class="card" style="width: 100%;" *ngFor="let val of report">
+  <div class="card-body">
+    <h5 class="card-title">{{val.component}}</h5>
+  </div>
+  <div class="card-body" *ngFor="let issue of val.issues">
+    <h5 class="card-title"><label class="col-8">{{issue.message}}</label><label col="4">{{issue.line}}</label></h5>
+    <p class="card-text">{{issue.message}}</p>
+  </div>
+</div> -->
+
+
+
+<!-- <button (click)="getHtml()">Generar</button> -->
+<router-outlet></router-outlet>

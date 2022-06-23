@@ -1,0 +1,32 @@
+<div class="offset-1 col-10 text-center rounded py-2 mb-2">
+  <h4>Reporte SonarQube</h4>
+</div>
+
+<div class="bg-success offset-1 col-10 text-center rounded py-2 mb-2">
+  <h4>Archivos por atender: {{report?.report.length}}</h4>
+  <h4>Reportes por atender: {{report.total}}</h4>
+</div>
+<div class="offset-1 col-10" *ngFor="let val of report?.report">
+  <p>
+    <button class="btn btn-primary w-100" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#'+val.key" aria-expanded="false" [attr.aria-controls]="val.key">
+      {{val.component}} <span class="badge text-bg-secondary">{{val.issues.length}}</span>
+    </button>
+  </p>
+  <div class="collapse " id="{{val.key}}">
+    <div class="card card-body border d-flex" *ngFor="let issue of val.issues">
+      <h5 class="card-title"><label class="col-8">{{issue.message}}</label><label col="4">{{issue.line}}</label></h5>
+      <button class="btn btn-info offset-2 col-8" (click)="mostrar('code', issue.key)" type="button"> Ver código
+      </button>
+      <div class="bg-info offset-2 col-8" *ngIf="showHide[issue.key]?.code?.mostrar">
+        <p class="col-12" *ngFor="let code of issue.linesCode['__zone_symbol__value']"><span class="px-3">{{code.line}}</span> <span [innerHtml]="code.code"></span> <label *ngIf="issue.line == code.line" class="text-bg-danger col-11 mt-3 mx-3 px-2 py-2 rounded">{{issue.message}} </label> </p>
+      </div>
+      <br><br>
+      <button class="btn btn-warning offset-2 col-8" (click)="mostrar('suggestion', issue.key)" type="button"> Ver Sugerencia
+      </button>
+      <div class="bg-warning offset-2 col-8 px-2" *ngIf="showHide[issue.key]?.suggestion?.mostrar">
+        <p class="col-12"><span class="px-3" [innerHtml]="issue.ruleName['__zone_symbol__value']"></span>  </p>
+      </div>
+    </div>
+  </div>
+
+</div>
