@@ -15,7 +15,7 @@ export class GenerateFilesComponent implements OnInit {
   public rules: any = [];
   public reports: any = [];
   public component: any = [];
-
+  public message: any = '';
 
   constructor(
     private createFile: CreateFilesService
@@ -30,16 +30,13 @@ export class GenerateFilesComponent implements OnInit {
     setTimeout(() => {
       const blob = new Blob([JSON.stringify({report: this.reports, total: this.total}, null, 2)], {type : 'application/json'});
       var url= window.URL.createObjectURL(blob);
+      this.message = 'Finalizó el Reporte...'
       window.open(url);
 
     }, 120000)
   }
 
   async getRules(ruleId: string) {
-    // let name: any;
-    // this.values.forEach((val: any) => {
-    //   name = val.rules.filter((v: any) => v.key == rule);
-    // });
     let rule: any = await this.createFile.getRules(ruleId).toPromise();
 
     return rule?.rule?.htmlDesc;
@@ -51,7 +48,6 @@ export class GenerateFilesComponent implements OnInit {
   }
   async getCodes(key: string, component: any) {
     let desc: any = await this.createFile.getCodes(key).toPromise();
-    // console.log('---', desc[component].sources)
     return desc[component].sources;
   }
 

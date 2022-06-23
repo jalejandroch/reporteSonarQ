@@ -28,7 +28,6 @@ export class CreateFilesService {
 		return this.httpCliente.get<any>(url, {headers: this.headers});
   }
   getCodes(key: string) {
-    console.log('--->')
     let url = `/api/sources/issue_snippets?issueKey=${key}`;
 		return this.httpCliente.get<any>(url, {headers: this.headers});
   }
